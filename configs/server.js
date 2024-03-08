@@ -6,16 +6,17 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import { dbConnection } from './mongo.js'
 
-
+import adminRoutes from '../src/Admin/admin.routes.js';
 class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT
 
+        this.adminPath = '/businessRecords/v2/admin';
 
         this.middlewares();
         this.connectDB();
-
+        this.routes()
     }
 
     async connectDB() {
@@ -28,6 +29,10 @@ class Server {
         this.app.use(express.json());
         this.app.use(helmet());
         this.app.use(morgan('dev'));
+    }
+
+    routes(){
+        this.app.use(this.adminPath, adminRoutes);
     }
 
     listen() {
