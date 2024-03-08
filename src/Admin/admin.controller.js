@@ -9,8 +9,8 @@ export const getAdminUser = async (req, res) => {
         const admin = new Admin({
             userAdmin: defaultAdminUser.userAdmin,
             adminName: defaultAdminUser.adminName,
-            adminEmail: defaultAdminUser.adminEmail,
-            adminPassword: defaultAdminUser.adminPassword
+            adminEmail: defaultAdminUser.email,
+            adminPassword: defaultAdminUser.password
         });
         const defAdminUser = defaultAdminUser.userAdmin;
 

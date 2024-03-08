@@ -9,11 +9,11 @@ const AdminSchema = mongoose.Schema({
         type: String,
         default: "José Soto"
     },
-    adminEmail: {
+    email: {
         type: String,
         default: "jsoto@admin.org"
     },
-    adminPassword: {
+    password: {
         type: String,
         default: "123"
     },
@@ -28,7 +28,7 @@ const AdminSchema = mongoose.Schema({
 });
 
 AdminSchema.methods.toJSON = function(){
-    const { __v, adminPassword, _id, role, status, ...adminRest} = this.toObject();
+    const { __v, password, _id, role, status, ...adminRest} = this.toObject();
     adminRest.uid= _id;
     return adminRest;
 }
