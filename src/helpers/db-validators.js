@@ -2,6 +2,8 @@ import Admin from "../Admin/admin.model.js";
 
 import User from '../user/user.model.js';
 
+
+//Validations for admin
 export const mainAdmin = async(userAdmin = '') => {
     const mainAdmin = await Admin.findOne({userAdmin});
     if (mainAdmin) {
@@ -15,6 +17,7 @@ export const mainEmailAdmin = async(adminEmail = '') => {
     }
 }
 
+//Validations for user
 export const existentUserName = async(userName = '') => {
     const existentUserName = await User.findOne({userName});
     if(existentUserName){
@@ -27,3 +30,6 @@ export const existentEmail = async(email = '') => {
         throw new Error(`User with email: ${email} already exists. You must register another email.`)
     }
 }
+
+//Role verification
+

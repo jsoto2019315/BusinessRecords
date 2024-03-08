@@ -1,6 +1,7 @@
 import bcryptjs from "bcryptjs";
 import { response } from "express";
 import Admin from "./admin.model.js";
+import User from "../user/user.model.js";
 import { mainAdmin } from "../helpers/db-validators.js";
 
 export const getAdminUser = async (req, res) => {
@@ -19,7 +20,7 @@ export const getAdminUser = async (req, res) => {
         if (validateOneAdmin) {
             return res.status(401).json({
                 msg: 'Main admin already exists, the admin is:',
-                admin  
+                admin
             });
         }
         await mainAdmin(defAdminUser);
@@ -36,3 +37,4 @@ export const getAdminUser = async (req, res) => {
         return res.status(500).json({ message: "Internal service error" });
     }
 }
+
