@@ -2,7 +2,7 @@ import bcryptjs from "bcryptjs";
 import { response } from "express";
 import Admin from "./admin.model.js";
 import User from "../user/user.model.js";
-import { verifyRole, mainAdmin } from "../helpers/db-validators.js";
+import { mainAdmin } from "../helpers/db-validators.js";
 export const getAdminUser = async (req, res) => {
     try {
         const defaultAdminUser = new Admin();
@@ -41,22 +41,21 @@ export const updateRole = async (req, res) => {
     try {
         const { __v, _id, name, email, password, status, ...rest } = req.body;
 
-        const role = global.exportRole;
-        const userRole = await User.findOne({ role });
-        const adminRole = await Admin.findOne({ role });
+        // const role = global.exportRole;
+        // const userRole = await User.findOne({ role });
+        // const adminRole = await Admin.findOne({ role });
 
-        console.log(role);
+        // console.log(role);
 
-        if (userRole === 'CUSTOMER_ROLE') {
-            return res.status(401).json({
-                msg: 'You are not an admin, you do not have this permissions'
-            })
-        } else if (!adminRole) {
-            return res.status(401).json({
-                msg: 'You are not an admin, you do not have this permissions'
-            })
-        }
-
+        // if (userRole === 'CUSTOMER_ROLE') {
+        //     return res.status(401).json({
+        //         msg: 'You are not an admin, you do not have this permissions'
+        //     })
+        // } else if (!adminRole) {
+        //     return res.status(401).json({
+        //         msg: 'You are not an admin, you do not have this permissions'
+        //     })
+        // }
 
         const user = await User.findOne({ userName: rest.userName });
 

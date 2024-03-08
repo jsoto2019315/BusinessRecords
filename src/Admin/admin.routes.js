@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { getAdminUser, updateRole } from "./admin.controller.js";
 import { check } from "express-validator";
-import { mainAdmin } from "../helpers/db-validators.js";
+import { mainAdmin, verifyUserRole } from "../helpers/db-validators.js";
 import { validateJWT } from "../middlewares/validate-jws.js";
 import { validateFields } from '../middlewares/validate-fields.js';
 
@@ -18,6 +18,7 @@ router.put(
     "/updateRole",
     [
         validateJWT,
+        verifyUserRole,
         check("role", "Required field").not().isEmpty(),
         validateFields
     ], updateRole

@@ -31,25 +31,26 @@ export const existentEmail = async (email = '') => {
 }
 
 //Role verification
-export const verifyRole = async (req, res, next) => {
+export const verifyUserRole = async (req, res, next) => {
+    try {
+        const role = global.exportRole;
+        const userRole = await User.findOne({ role });
+        const adminRole = await Admin.findOne({ role });
 
-    const role=global.exportRole;
-    console.log('Este es el role:', role);
-    const verifyUserRole = await User.findOne({ role });
-    const verifyAdminRole = await Admin.findOne({ role });
+        console.log(role);
 
-    if (verifyUserRole) {
-        if (verifyUserRole === 'CUSTOMER_ROLE') {
-            throw new Error("You are a customer, you don't have all permissions");
-        } else if (verifyUserRole === 'ADMIN_ROLE') {
-            return 'Welcome admin :D'
+        // if (userRole === 'CUSTOMER_ROLE') {
+        //     return res.status(401).json({
+        //         msg: 'You are not an admin, you do not have this permissions'
+        //     })
+        // } 
+        if (!adminRole) {
+            return res.status(401).json({
+                msg: 'You are not an admin, you do not have this permissions'
+            })
         }
+    } catch (e) {
+        console.log(e)
     }
-    if (verifyAdminRole) {
-        if (verifyAdminRole === 'ADMIN_ROLE') {
-            return 'Welcome admin :D'
-        }
-    }
-
     next();
 }
