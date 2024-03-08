@@ -37,7 +37,7 @@ export const login = async (req, res) => {
                 exportedToken = token;
 
                 res.status(200).json({
-                    msg: `You have logged in successfully, welcome ${user.name}`
+                    msg: `You have logged in successfully, welcome ${user.name}, token: ${token}`
                 });
             } else if (admin) {
                 const validPassword = await Admin.findOne({ password })
@@ -51,7 +51,7 @@ export const login = async (req, res) => {
                 exportedToken = token;
 
                 res.status(200).json({
-                    msg: `You have logged in successfully, welcome ${admin.adminName}, you have the role: ${admin.role}`
+                    msg: `You have logged in successfully, welcome ${admin.adminName}, you have the role: ${admin.role}, token: ${token}`
                 });
             }
         }

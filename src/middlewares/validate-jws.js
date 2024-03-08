@@ -3,7 +3,9 @@ import User from '../user/user.model.js';
 import Admin from '../Admin/admin.model.js';
 import { exportedToken } from '../auth/auth.controller.js';
 
+
 export const validateJWT = async (req, res, next) => {
+    global.exportRole = null;
     try {
         const token = exportedToken;
 
@@ -18,18 +20,27 @@ export const validateJWT = async (req, res, next) => {
         const user = await User.findById(uid);
         const admin = await Admin.findById(uid);
 
-        if (!user && !user.status) {
-            return res.status(401).json({
-                msg: 'User does not exists on DB or user has a false status'
-            })
-        } else if (!admin && !admin.status) {
-            return res.status(401).json({
-                msg: 'Admin does not exists on DB or user has a false status'
-            })
+        if (user) {
+            if (!user) {
+                return res.status(401).json({
+                    msg: 'User does not exists on DB or user has a false status'
+                })
+            }
+            req.user = user;
+            const userRole = user.role;
+            global.exportRole = userRole;
+            // console.log(exportRole);
+        } else if (admin) {
+            if (!admin) {
+                return res.status(401).json({
+                    msg: 'Admin does not exists on DB or user has a false status'
+                })
+            }
+            req.admin = admin;
+            const adminRole = admin.role;
+            global.exportRole = adminRole;
+            // console.log(exportRole);
         }
-
-        req.user = user;
-        req.admin = admin;
 
         next();
     } catch (e) {
