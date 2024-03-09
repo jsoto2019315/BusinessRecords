@@ -1,5 +1,6 @@
 import { response, request } from "express";
 import Category from "./categories.model.js"
+import Product from "../products/products.model.js";
 
 export const addCategory = async (req, res) => {
     try {
@@ -85,19 +86,33 @@ export const deleteCategory = async (req, res) => {
                 error: 'Category not found'
             });
         }
-        console.log(category.status)
+        
+        const defaultCategory = "65ecd61c6a4932f698a9916a";
+
+        const products = await Product.find({ category: category._id });
+        console.log(`Found ${products.length} products to update.`);
+
+        if (products.length > 0) {
+            console.log("Moving products to default category...");
+            await Promise.all(products.map(async product => {
+                product.category = defaultCategory;
+                await product.save();
+            }));
+            console.log("Products moved successfully.");
+        }
 
         category.status = false;
         await category.save();
 
         return res.status(200).json({
-            msg: "Category was deleted"
+            msg: "Category was deleted and products were transferred to the default category"
         });
 
-        
+
     } catch (e) {
+        console.log(e)
         return res.status(500).json({
-            error:('Internal server error ', e)
+            error: ('Internal server error ', e)
         })
     }
 }
