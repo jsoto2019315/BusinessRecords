@@ -49,9 +49,17 @@ export const verifyUserRole = async (req, res, next) => {
 }
 
 // Validations to categories
+// export const existentCategory = async (categoryName = '') => {
+//     const existentCategory = await Category.findOne({categoryName});
+//     const categoryStatus = await Category.findOne();
+//     if (existentCategory) {
+//         throw new Error("This category already exists");
+//     }else if(){
+//         throw new Error("This category was deleted, but just have a false status");
+//     }
 export const existentCategory = async (categoryName = '') => {
-    const existentCategory = await Category.findOne({categoryName});
+    const existentCategory = await Category.findOne({ categoryName });
     if (existentCategory) {
-        throw new Error("This category already exists");
+        throw new Error("This category already exists or maybe have a false status");
     }
 }

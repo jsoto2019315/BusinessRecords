@@ -5,7 +5,7 @@ import { validateFields } from '../middlewares/validate-fields.js';
 import { existentCategory, verifyUserRole } from "../helpers/db-validators.js";
 
 import { validateJWT } from '../middlewares/validate-jws.js'
-import { addCategory, updateCategory, viewCategories } from "./categories.controller.js";
+import { addCategory, deleteCategory, updateCategory, viewCategories } from "./categories.controller.js";
 
 
 const router = Router();
@@ -40,6 +40,16 @@ router.put(
         check("description", "Required field").not().isEmpty(),
         validateFields,
     ], updateCategory
+);
+
+router.delete(
+    "/deleteCategory",
+    [
+        validateJWT,
+        verifyUserRole,
+        check("categoryName", "Required field").not().isEmpty(),
+        validateFields,
+    ], deleteCategory
 );
 
 

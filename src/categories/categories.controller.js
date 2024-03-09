@@ -48,7 +48,7 @@ export const updateCategory = async (req, res) => {
     try {
         const { _id, __v, status, oldCategoryName, newCategoryName, ...rest } = req.body;
 
-        const category = await Category.findOne({ oldCategoryName: rest.categoryName})
+        const category = await Category.findOne({ oldCategoryName: rest.categoryName })
 
         if (!category || !category.status) {
             return res.status(400).json({
@@ -68,11 +68,36 @@ export const updateCategory = async (req, res) => {
             msg: 'Category update successfully'
         });
 
-
-
     } catch (e) {
         return res.status(500).json({
             msg: ('Internal server error', e)
+        })
+    }
+}
+
+export const deleteCategory = async (req, res) => {
+    try {
+        const { categoryName } = req.body;
+        const category = await Category.findOne({ categoryName });
+
+        if (!category || !category.status) {
+            return res.status(400).json({
+                error: 'Category not found'
+            });
+        }
+        console.log(category.status)
+
+        category.status = false;
+        await category.save();
+
+        return res.status(200).json({
+            msg: "Category was deleted"
+        });
+
+        
+    } catch (e) {
+        return res.status(500).json({
+            error:('Internal server error ', e)
         })
     }
 }
