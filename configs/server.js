@@ -9,6 +9,7 @@ import { dbConnection } from './mongo.js'
 import adminRoutes from '../src/Admin/admin.routes.js';
 import userRoutes from '../src/user/user.routes.js';
 import authRoutes from '../src/auth/auth.routes.js';
+import categoryRoutes from '../src/categories/categories.routes.js';
 class Server {
     constructor() {
         this.app = express();
@@ -17,6 +18,8 @@ class Server {
         this.adminPath = '/businessRecords/v2/admin';
         this.userPath = '/businessRecords/v2/user';
         this.loginPath = '/businessRecords/v2/login'
+
+        this.categoryPath = '/businessRecords/v2/admin/category'
 
         this.middlewares();
         this.connectDB();
@@ -39,6 +42,7 @@ class Server {
         this.app.use(this.adminPath, adminRoutes);
         this.app.use(this.userPath, userRoutes);
         this.app.use(this.loginPath, authRoutes);
+        this.app.use(this.categoryPath, categoryRoutes);
     }
 
     listen() {
