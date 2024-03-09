@@ -5,7 +5,7 @@ import { validateFields } from '../middlewares/validate-fields.js';
 import { categoryFalse, existentProductName, nonExistentProduct, verifyUserRole } from "../helpers/db-validators.js";
 
 import { validateJWT } from '../middlewares/validate-jws.js';
-import { addProduct, viewCatalog, viewIndividualProduct } from "./products.controller.js";
+import { addProduct, viewAllCatalog, viewCatalog, viewIndividualProduct } from "./products.controller.js";
 
 const router = Router()
 
@@ -43,5 +43,14 @@ router.get(
         check("category", "RequiredField").not().isEmpty(),
         validateFields
     ], viewCatalog
+);
+
+router.get(
+    "/viewAllCatalog",
+    [
+        validateJWT,
+        verifyUserRole,
+    ],
+    viewAllCatalog
 )
 export default router;

@@ -58,3 +58,28 @@ export const viewCatalog = async (req, res) => {
         })
     }
 }
+
+export const viewAllCatalog = async (req, res) => {
+    try {
+        const products = { status: 'IN_STOCK' };
+
+        const [total, allProducts] = await Promise.all([
+            Product.countDocuments(products),
+            Product.find(products)
+                .populate('category', '-_id categoryName')
+                .sort({ 'category': -1 })
+        ])
+
+        res.status(200).json({
+            total,
+            allProducts
+        })
+    } catch (e) {
+        res.status(500).json({
+            msg: ('Internal service error' + e)
+        })
+        console.log(e)
+    }
+}
+
+//Edit data
