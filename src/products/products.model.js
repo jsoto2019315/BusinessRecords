@@ -16,6 +16,10 @@ const ProductsSchema = mongoose.Schema({
         type: Number,
         require: [true, "Required field"]
     },
+    productsEntered: {
+        type: Number,
+        require: [true, "Required field"]
+    },
     stock: {
         type: Number,
         require: [true, "Required field"]
@@ -27,8 +31,8 @@ const ProductsSchema = mongoose.Schema({
     }
 });
 
-ProductsSchema.methods.toJSON = function(){
-    const {__v, _id, ...rest} = this.toObject();
+ProductsSchema.methods.toJSON = function () {
+    const { __v, _id, ...rest } = this.toObject();
     rest.uid = _id;
     return rest;
 }

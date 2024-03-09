@@ -5,8 +5,8 @@ import Category from '../categories/categories.model.js'
 //Add new product
 export const addProduct = async (req, res) => {
     try {
-        const { productName, description, category, price, stock } = req.body;
-        const product = new Product({ productName, description, category, price, stock });
+        const { productName, description, category, price, stock, productsEntered } = req.body;
+        const product = new Product({ productName, description, category, price, stock, productsEntered });
 
         await product.save();
 
@@ -84,8 +84,8 @@ export const viewAllCatalog = async (req, res) => {
 //Edit data
 export const updateProduct = async (req, res) => {
     try {
-        const { _id, __v, oldProductName, newProductName, ...rest } = req.body;
-        const product = await Product.findOne({ productName: oldProductName });
+        const { _id, __v, searchedProduct, newProductName, ...rest } = req.body;
+        const product = await Product.findOne({ productName: searchedProduct });
 
         //CAMBIAR A QUE SI EL ESTADO ES FALSO NO SE PUEDA EDITAR, XQ NO EXISTE
         if (!product) {

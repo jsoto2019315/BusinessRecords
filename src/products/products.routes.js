@@ -21,6 +21,7 @@ router.post(
         check("category").custom(categoryFalse),
         check("price", "Required field").not().isEmpty(),
         check("stock", "Required field").not().isEmpty(),
+        check("productsEntered", "Required field").not().isEmpty(),
         validateFields
     ], addProduct
 );
@@ -59,7 +60,7 @@ router.put(
     [
         validateJWT,
         verifyUserRole,
-        check("oldProductName", "Required field").not().isEmpty(),
+        check("searchedProduct", "Required field").not().isEmpty(),
         validateFields
     ], updateProduct
 );
