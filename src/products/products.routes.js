@@ -2,10 +2,10 @@ import { Router } from "express";
 import { check } from "express-validator";
 
 import { validateFields } from '../middlewares/validate-fields.js';
-import { categoryFalse, existentCategory, existentProductName, verifyUserRole } from "../helpers/db-validators.js";
+import { categoryFalse, existentProductName, nonExistentProduct, verifyUserRole } from "../helpers/db-validators.js";
 
 import { validateJWT } from '../middlewares/validate-jws.js';
-import { addProduct } from "./products.controller.js";
+import { addProduct, viewIndividualProduct } from "./products.controller.js";
 
 const router = Router()
 
@@ -23,6 +23,18 @@ router.post(
         check("stock", "Required field").not().isEmpty(),
         validateFields
     ], addProduct
+);
+
+router.get(
+    "/viewIndividualProduct",
+    [
+        validateJWT,
+        verifyUserRole,
+        check("productName", "Required field").not().isEmpty(),
+        check("productName").custom(nonExistentProduct),
+        validateFields
+    ],
+    viewIndividualProduct
 );
 
 export default router;

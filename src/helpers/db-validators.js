@@ -66,6 +66,13 @@ export const categoryFalse = async (id) => {
 export const existentProductName = async (productName = '') => {
     const existentProductName = await Product.findOne({ productName });
     if (existentProductName) {
-        throw new Error("This product already exists or maybe have a false status");
+        throw new Error("This product already exists");
+    }
+}
+
+export const nonExistentProduct = async (productName, req, res, next) => {
+    const product = await Product.findOne({productName});
+    if(!product){
+        throw new Error(`The product ${productName} doesn't exists`);
     }
 }

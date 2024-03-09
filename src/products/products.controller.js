@@ -19,3 +19,19 @@ export const addProduct = async (req, res) => {
         })
     }
 }
+
+export const viewIndividualProduct = async (req, res) => {
+    try {
+        const { productName } = req.body;
+        const product = await Product.findOne({ productName });
+
+        res.status(200).json({
+            product
+        })
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({
+            error: ('Internal service error ' + e)
+        })
+    }
+}
