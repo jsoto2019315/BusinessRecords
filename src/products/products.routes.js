@@ -5,7 +5,7 @@ import { validateFields } from '../middlewares/validate-fields.js';
 import { categoryFalse, existentProductName, nonExistentProduct, verifyUserRole } from "../helpers/db-validators.js";
 
 import { validateJWT } from '../middlewares/validate-jws.js';
-import { addProduct, viewAllCatalog, viewCatalog, viewIndividualProduct } from "./products.controller.js";
+import { addProduct, deleteProduct, updateProduct, viewAllCatalog, viewCatalog, viewIndividualProduct } from "./products.controller.js";
 
 const router = Router()
 
@@ -40,7 +40,7 @@ router.get(
 router.get(
     "/viewCatalog",
     [
-        check("category", "RequiredField").not().isEmpty(),
+        check("category", "Required field").not().isEmpty(),
         validateFields
     ], viewCatalog
 );
@@ -52,5 +52,24 @@ router.get(
         verifyUserRole,
     ],
     viewAllCatalog
-)
+);
+
+router.put(
+    "/updateProduct",
+    [
+        validateJWT,
+        verifyUserRole,
+        check("oldProductName", "Required field").not().isEmpty(),
+        validateFields
+    ], updateProduct
+);
+
+router.delete(
+    "/deleteProduct",
+    [   
+        check("productName", "Required field").not().isEmpty(),
+        validateFields
+    ], deleteProduct
+);
+
 export default router;

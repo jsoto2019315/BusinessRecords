@@ -38,7 +38,7 @@ export const viewIndividualProduct = async (req, res) => {
     }
 }
 
-//View catalog
+//View product
 export const viewCatalog = async (req, res) => {
     try {
         const { category } = req.body;
@@ -58,7 +58,6 @@ export const viewCatalog = async (req, res) => {
         })
     }
 }
-
 export const viewAllCatalog = async (req, res) => {
     try {
         const products = { status: 'IN_STOCK' };
@@ -83,3 +82,53 @@ export const viewAllCatalog = async (req, res) => {
 }
 
 //Edit data
+export const updateProduct = async (req, res) => {
+    try {
+        const { _id, __v, oldProductName, newProductName, ...rest } = req.body;
+        const product = await Product.findOne({ productName: oldProductName });
+
+        //CAMBIAR A QUE SI EL ESTADO ES FALSO NO SE PUEDA EDITAR, XQ NO EXISTE
+        if (!product) {
+            return res.status(400).json({
+                error: 'Product not found'
+            });
+        }
+
+        if (newProductName) {
+            product.productName = newProductName;
+        }
+
+        Object.assign(product, rest);
+
+        await product.save();
+
+        res.status(200).json({
+            msg: 'Product update successfully'
+        });
+
+    } catch (e) {
+        return res.status(500).json({
+            msg: ('Internal server error', e)
+        }),
+            console.log(e)
+    }
+}
+
+//Delete product
+export const deleteProduct = async (req, res) => {
+    const { productName } = req.body;
+    const deleteProduct = await Product.findOneAndDelete({ productName });
+    if (!deleteProduct || deleteProduct.status === 'DELETED') {
+        return res.status(404).json({
+            error: `The product *${productName}* doesn't exists`
+        })
+    }
+
+    // deleteProduct.status = 'DELETED';
+    // deleteProduct.stock = 0;
+    // await deleteProduct.save();
+
+    return res.status(200).json({
+        msg: 'Product deleted'
+    })
+}
