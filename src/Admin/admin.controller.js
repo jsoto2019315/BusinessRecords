@@ -41,22 +41,6 @@ export const updateRole = async (req, res) => {
     try {
         const { __v, _id, name, email, password, status, ...rest } = req.body;
 
-        // const role = global.exportRole;
-        // const userRole = await User.findOne({ role });
-        // const adminRole = await Admin.findOne({ role });
-
-        // console.log(role);
-
-        // if (userRole === 'CUSTOMER_ROLE') {
-        //     return res.status(401).json({
-        //         msg: 'You are not an admin, you do not have this permissions'
-        //     })
-        // } else if (!adminRole) {
-        //     return res.status(401).json({
-        //         msg: 'You are not an admin, you do not have this permissions'
-        //     })
-        // }
-
         const user = await User.findOne({ userName: rest.userName });
 
         if (!user || !user.status) {

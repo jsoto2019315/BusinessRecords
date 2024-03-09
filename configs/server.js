@@ -10,6 +10,7 @@ import adminRoutes from '../src/Admin/admin.routes.js';
 import userRoutes from '../src/user/user.routes.js';
 import authRoutes from '../src/auth/auth.routes.js';
 import categoryRoutes from '../src/categories/categories.routes.js';
+import productsRoutes from '../src/products/products.routes.js';
 class Server {
     constructor() {
         this.app = express();
@@ -20,6 +21,7 @@ class Server {
         this.loginPath = '/businessRecords/v2/login'
 
         this.categoryPath = '/businessRecords/v2/admin/category'
+        this.productPath = '/businessRecords/v2/admin/products'
 
         this.middlewares();
         this.connectDB();
@@ -43,6 +45,7 @@ class Server {
         this.app.use(this.userPath, userRoutes);
         this.app.use(this.loginPath, authRoutes);
         this.app.use(this.categoryPath, categoryRoutes);
+        this.app.use(this.productPath, productsRoutes);
     }
 
     listen() {

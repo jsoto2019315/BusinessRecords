@@ -29,7 +29,6 @@ export const validateJWT = async (req, res, next) => {
             req.user = user;
             const userRole = user.role;
             global.exportRole = userRole;
-            // console.log(exportRole);
         } else if (admin) {
             if (!admin) {
                 return res.status(401).json({
@@ -39,16 +38,12 @@ export const validateJWT = async (req, res, next) => {
             req.admin = admin;
             const adminRole = admin.role;
             global.exportRole = adminRole;
-            // console.log(exportRole);
         }
 
         next();
     } catch (e) {
-        console.log('');
         res.status(401).json({
             msg: 'Invalid token'
         })
-        console.log("Token is:", exportedToken, "\n");
-        console.log(e);
     }
 }
