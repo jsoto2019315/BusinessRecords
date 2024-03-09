@@ -41,6 +41,8 @@ router.get(
 router.get(
     "/viewCatalog",
     [
+        validateJWT,
+        verifyUserRole,
         check("category", "Required field").not().isEmpty(),
         validateFields
     ], viewCatalog
@@ -68,6 +70,8 @@ router.put(
 router.delete(
     "/deleteProduct",
     [   
+        validateJWT,
+        verifyUserRole,
         check("productName", "Required field").not().isEmpty(),
         validateFields
     ], deleteProduct
