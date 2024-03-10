@@ -7,7 +7,7 @@ export const addProduct = async (req, res) => {
     try {
         const { productName, description, category, price, stock, productsEntered } = req.body;
         const product = new Product({ productName, description, category, price, stock, productsEntered });
-
+        
         await product.save();
 
         res.status(200).json({
