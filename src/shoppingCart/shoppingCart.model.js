@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
 
-const ShoppingCartSchema = mongoose.Schema({
+const ShoppingCartSchema = new mongoose.Schema({
     products: [
         {
             productName: {

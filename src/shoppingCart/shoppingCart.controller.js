@@ -12,7 +12,6 @@ export const shoppingCart = async (req, res) => {
 
         for (let product of products) {
             const productName = product.productName;
-            // Busca el producto por nombre
             const foundProduct = await Product.findOne({ productName: productName });
 
             if (!foundProduct || foundProduct.status === 'SOLD') {
