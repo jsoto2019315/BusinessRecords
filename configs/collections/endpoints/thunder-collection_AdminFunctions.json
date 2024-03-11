@@ -1,0 +1,236 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "AdminFunctions",
+    "dateExported": "2024-03-11T04:11:07.045Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "a01cbf12-177e-43f1-b1d9-2b1e7045ef7d",
+            "name": "Categories",
+            "containerId": "",
+            "created": "2024-03-08T23:40:30.694Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "58abdd75-871c-4ec9-aa4c-11413c28a887",
+            "name": "UserManagement",
+            "containerId": "",
+            "created": "2024-03-08T23:41:21.002Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "bded8c65-a4e1-4b5b-9040-f9df1df1ac4f",
+            "name": "Products",
+            "containerId": "",
+            "created": "2024-03-09T04:21:34.734Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "75071394-a318-4dc1-a49c-afb82289203a",
+            "colId": "9eab20f9-2ab8-4bed-8d9a-c64dd6bde3ff",
+            "containerId": "58abdd75-871c-4ec9-aa4c-11413c28a887",
+            "name": "UpdateRole",
+            "url": "http://localhost:3000/businessRecords/v2/admin/updateRole",
+            "method": "PUT",
+            "sortNum": 10000,
+            "created": "2024-03-08T14:17:21.529Z",
+            "modified": "2024-03-08T17:15:13.135Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userName\": \"amax\",\n  \"role\": \"ADMIN_ROLE\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "df3667fb-c30e-45eb-800d-ac807e5a57eb",
+            "colId": "9eab20f9-2ab8-4bed-8d9a-c64dd6bde3ff",
+            "containerId": "a01cbf12-177e-43f1-b1d9-2b1e7045ef7d",
+            "name": "AddNewCategory",
+            "url": "http://localhost:3000/businessRecords/v2/admin/category/addCategory",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-08T23:17:57.451Z",
+            "modified": "2024-03-09T21:35:13.053Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"categoryName\": \"Default\",\n  \"description\": \"Default category\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "0d52682c-678d-4c1e-ad75-d70ae10290b9",
+            "colId": "9eab20f9-2ab8-4bed-8d9a-c64dd6bde3ff",
+            "containerId": "a01cbf12-177e-43f1-b1d9-2b1e7045ef7d",
+            "name": "ViewCategories",
+            "url": "http://localhost:3000/businessRecords/v2/admin/category/viewCategory",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-03-08T23:35:58.062Z",
+            "modified": "2024-03-08T23:36:36.041Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "6580d4ac-f7f6-43fa-a17b-a334bbcb6885",
+            "colId": "9eab20f9-2ab8-4bed-8d9a-c64dd6bde3ff",
+            "containerId": "a01cbf12-177e-43f1-b1d9-2b1e7045ef7d",
+            "name": "UpdateCategory",
+            "url": "http://localhost:3000/businessRecords/v2/admin/category/updateCategory",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-03-09T00:01:06.818Z",
+            "modified": "2024-03-09T00:27:16.396Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"oldCategoryName\": \"adfasfddf\",\n  \"newCategoryName\": \"Technology\",\n  \"description\": \"All types of technological devices\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "19cedf7c-e744-4ac8-80f5-15e295c2b3c9",
+            "colId": "9eab20f9-2ab8-4bed-8d9a-c64dd6bde3ff",
+            "containerId": "a01cbf12-177e-43f1-b1d9-2b1e7045ef7d",
+            "name": "DeleteCategory",
+            "url": "http://localhost:3000/businessRecords/v2/admin/category/deleteCategory",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2024-03-09T00:36:01.349Z",
+            "modified": "2024-03-09T21:45:05.842Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"categoryName\": \"Drinks\"\n}",
+                "form": []
+            },
+            "reqType": "del",
+            "tests": []
+        },
+        {
+            "_id": "3cd9222d-2f69-4f1e-95a2-a7220928aa0e",
+            "colId": "9eab20f9-2ab8-4bed-8d9a-c64dd6bde3ff",
+            "containerId": "bded8c65-a4e1-4b5b-9040-f9df1df1ac4f",
+            "name": "AddNewProduct",
+            "url": "http://localhost:3000/businessRecords/v2/admin/products/addNewProduct",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2024-03-09T04:21:41.685Z",
+            "modified": "2024-03-10T22:20:02.427Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productName\": \"Lays\",\n  \"description\": \"Fries potatoes\",\n  \"category\": \"65eba28cadd81b6b7fbeeebb\",\n  \"price\": 6.25,\n  \"productsEntered\": 0,\n  \"stock\": 0\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "02f6b058-0698-4ada-ba6f-62406aba11c9",
+            "colId": "9eab20f9-2ab8-4bed-8d9a-c64dd6bde3ff",
+            "containerId": "bded8c65-a4e1-4b5b-9040-f9df1df1ac4f",
+            "name": "ViewIndividualProduct",
+            "url": "http://localhost:3000/businessRecords/v2/admin/products/viewIndividualProduct",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-03-09T06:46:33.759Z",
+            "modified": "2024-03-09T21:46:01.296Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productName\":\"Sprite\"\n}",
+                "form": []
+            },
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "a773597e-092b-4abc-b88a-a14bab2b16b0",
+            "colId": "9eab20f9-2ab8-4bed-8d9a-c64dd6bde3ff",
+            "containerId": "bded8c65-a4e1-4b5b-9040-f9df1df1ac4f",
+            "name": "ViewCatalog",
+            "url": "http://localhost:3000/businessRecords/v2/admin/products/viewCatalog",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2024-03-09T07:36:34.660Z",
+            "modified": "2024-03-09T07:37:43.773Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"category\": \"65eba253add81b6b7fbeeeb1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6f426ea9-f73f-4980-8126-d07cbbded7a5",
+            "colId": "9eab20f9-2ab8-4bed-8d9a-c64dd6bde3ff",
+            "containerId": "bded8c65-a4e1-4b5b-9040-f9df1df1ac4f",
+            "name": "ViewAllCatalog",
+            "url": "http://localhost:3000/businessRecords/v2/admin/products/viewAllCatalog",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-03-09T08:04:26.561Z",
+            "modified": "2024-03-09T08:04:40.795Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "da7feb00-49e9-44cf-ba41-2ff11189be51",
+            "colId": "9eab20f9-2ab8-4bed-8d9a-c64dd6bde3ff",
+            "containerId": "bded8c65-a4e1-4b5b-9040-f9df1df1ac4f",
+            "name": "UpdateProduct",
+            "url": "http://localhost:3000/businessRecords/v2/admin/products/updateProduct",
+            "method": "PUT",
+            "sortNum": 130000,
+            "created": "2024-03-09T08:31:20.570Z",
+            "modified": "2024-03-09T22:27:01.651Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"searchedProduct\": \"Sprite\",\n  \"category\": \"65ebf2b2c9e0a6c3e8b249a5\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "5a1669a2-a0bd-4575-89fd-7ae1d72d4b30",
+            "colId": "9eab20f9-2ab8-4bed-8d9a-c64dd6bde3ff",
+            "containerId": "bded8c65-a4e1-4b5b-9040-f9df1df1ac4f",
+            "name": "DeleteProduct",
+            "url": "http://localhost:3000/businessRecords/v2/admin/products/deleteProduct",
+            "method": "DELETE",
+            "sortNum": 140000,
+            "created": "2024-03-09T19:38:49.155Z",
+            "modified": "2024-03-09T19:44:10.183Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productName\":\"Lays\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

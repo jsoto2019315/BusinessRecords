@@ -1,0 +1,64 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "CustomerFunctions",
+    "dateExported": "2024-03-11T04:11:10.896Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "42ad20b3-ec13-4877-bdcc-a01140b20203",
+            "name": "ShoppingCart",
+            "containerId": "",
+            "created": "2024-03-09T23:59:35.325Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "97b8b8db-7c88-48f1-b1e3-10fc38ac3a59",
+            "name": "Invoice",
+            "containerId": "",
+            "created": "2024-03-11T00:54:50.906Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "a87e348b-1a87-409f-bea4-b166e0a4f83c",
+            "colId": "3585e97a-2ac5-4c2a-bf5e-77f14ce00670",
+            "containerId": "42ad20b3-ec13-4877-bdcc-a01140b20203",
+            "name": "AddNewShoppingCart",
+            "url": "http://localhost:3000/businessRecords/v2/customer/shoppingCart/addShoppingCart",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-09T23:59:44.913Z",
+            "modified": "2024-03-11T03:51:24.974Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"products\": [\n    {\n      \"productName\": \"Coca-Cola\",\n      \"quantity\": 3\n    },\n    {\n      \"productName\":  \"Laptop\",\n      \"quantity\": 2\n    }\n  ],\n  \"user\": \"65eaa2ddd73d46d58e12da21\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "3705fd27-7f64-4957-a224-6286f7124eba",
+            "colId": "3585e97a-2ac5-4c2a-bf5e-77f14ce00670",
+            "containerId": "97b8b8db-7c88-48f1-b1e3-10fc38ac3a59",
+            "name": "GenerateInvoice",
+            "url": "http://localhost:3000/businessRecords/v2/customer/invoice/showInvoice/",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-03-11T00:54:59.680Z",
+            "modified": "2024-03-11T03:10:12.059Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userId\":\"65eaa2ddd73d46d58e12da21\"\n}",
+                "form": []
+            },
+            "reqType": "get",
+            "tests": []
+        }
+    ]
+}

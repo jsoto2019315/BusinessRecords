@@ -1,0 +1,23 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "DefaultAdmin",
+    "dateExported": "2024-03-11T04:11:01.277Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "bec1d811-01d3-4b40-a9b9-14fa69e4ab9b",
+            "colId": "207c3f87-2851-40d1-bc55-44c884447104",
+            "containerId": "",
+            "name": "ShowDefaultAdmin",
+            "url": "http://localhost:3000/businessRecords/v2/admin/showAdmin",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-03-04T17:30:27.446Z",
+            "modified": "2024-03-04T17:34:42.380Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
