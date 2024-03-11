@@ -17,6 +17,7 @@ export const mainEmailAdmin = async (adminEmail = '') => {
 }
 
 //Validations for user
+
 export const existentUserName = async (userName = '') => {
     const existentUserName = await User.findOne({ userName });
     if (existentUserName) {

@@ -11,6 +11,7 @@ const router = Router()
 router.post(
     "/addShoppingCart",
     [
+        validateJWT,
         check("products", "Required field").not().isEmpty(),
         check("user", "Required field").not().isEmpty(),
         validateFields,
