@@ -8,6 +8,9 @@ const router = Router();
 
 router.get(
     "/showInvoice",
+    [
+        validateJWT,
+    ],
     showInvoice
 )
 
