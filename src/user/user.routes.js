@@ -3,7 +3,8 @@ import { check } from "express-validator";
 
 import { validateFields } from "../middlewares/validate-fields.js";
 import { existentEmail, existentUserName, mainAdmin, mainEmailAdmin } from "../helpers/db-validators.js";
-import { addUser } from "./user.controller.js";
+import { addUser, deleteUser, updateUser } from "./user.controller.js";
+import { validateJWT } from "../middlewares/validate-jws.js";
 
 
 
@@ -26,4 +27,21 @@ router.post(
     ], addUser
 );
 
+router.put(
+    "/update",
+    [
+        validateJWT,
+        check("searchedUser", "Required field").not().isEmpty(),
+        validateFields
+    ], updateUser
+);
+
+router.delete(
+    "/delete",
+    [
+        validateJWT,
+        check("userName", "Required field").not().isEmpty(),
+        validateFields
+    ], deleteUser
+);
 export default router;

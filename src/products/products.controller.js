@@ -87,7 +87,6 @@ export const updateProduct = async (req, res) => {
         const { _id, __v, searchedProduct, newProductName, ...rest } = req.body;
         const product = await Product.findOne({ productName: searchedProduct });
 
-        //CAMBIAR A QUE SI EL ESTADO ES FALSO NO SE PUEDA EDITAR, XQ NO EXISTE
         if (!product) {
             return res.status(400).json({
                 error: 'Product not found'
@@ -124,9 +123,10 @@ export const deleteProduct = async (req, res) => {
         })
     }
 
-    // deleteProduct.status = 'DELETED';
-    // deleteProduct.stock = 0;
-    // await deleteProduct.save();
+    deleteProduct.status = 'DELETED';
+    deleteProduct.stock = 0;
+    deleteProduct.productsEntered = 0;
+    await deleteProduct.save();
 
     return res.status(200).json({
         msg: 'Product deleted'
