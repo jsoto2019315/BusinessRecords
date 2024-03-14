@@ -86,6 +86,11 @@ export const deleteCategory = async (req, res) => {
                 error: 'Category not found'
             });
         }
+        if(category.categoryName === "Default"){
+            return res.status(400).json({
+                error: "Category Default can't be deleted"
+            });
+        }
         
         const defaultCategory = "65ecd61c6a4932f698a9916a";
 
